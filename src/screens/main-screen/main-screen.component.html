@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <app-title [title]="'Configurar Usuarios'" [color]="'blue'"></app-title>
                     <p class="card-text">Administra usuarios, roles y permisos de forma intuitiva.</p>
-                    <a href="#" class="btn btn-outline-primary w-100">Ver más</a>
+                    <app-button (onExecute)="showMore()" [title]="'Ver más'" [color]="'blue'"></app-button>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <div class="card-body">
                     <app-title [title]="'Informes'" [color]="'green'"></app-title>
                     <p class="card-text">Genera informes dinámicos y visualiza métricas clave en tiempo real.</p>
-                    <a href="#" class="btn btn-outline-success w-100">Explorar</a>
+                    <app-button (onExecute)="explore()" [title]="'Explorar'" [color]="'green'"></app-button>
                 </div>
             </div>
         </div>
@@ -34,8 +34,28 @@
                 <div class="card-body">
                     <app-title [title]="'Preferencias'" [color]="'red'"></app-title>
                     <p class="card-text">Personaliza las preferencias del sistema y opciones avanzadas.</p>
-                    <a href="#" class="btn btn-outline-danger w-100">Configurar</a>
+                    <app-button (onExecute)="configure()" [title]="'Configurar'" [color]="'red'"></app-button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center fw-bold text-primary">Filtros</h2>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col text-center">
+
+                <app-active-filter [title]="'¿Mostrar inactivos?'"
+                    (active)="showInactiveUsers($event)"></app-active-filter>
+            </div>
+            <div class="col text-center">
+                <app-active-filter [title]="'¿Mostrar externos?'"
+                    (active)="showExternalUsers($event)"></app-active-filter>
             </div>
         </div>
     </div>

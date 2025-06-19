@@ -1,14 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { TitleComponent } from "../../components/title/title.component";
+import { ButtonComponent } from "../../components/button/button.component";
+import { ActiveFilterComponent } from "../../components/active-filter/active-filter.component";
 
 @Component({
   selector: 'app-main-screen',
-  imports: [TitleComponent],
+  imports: [TitleComponent, ButtonComponent, ActiveFilterComponent],
   templateUrl: './main-screen.component.html',
   styleUrl: './main-screen.component.css',
   standalone: true,
 })
 export class MainScreenComponent implements OnInit, OnDestroy {
+  showInactive = signal<boolean>(false);
+  showExternals = signal<boolean>(false);
 
   constructor() {
     // inicializar las variables
@@ -22,5 +26,23 @@ export class MainScreenComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     // unsubscribe de un observable
+  }
+
+  showMore() {
+    console.log("Show more!");
+  }
+  explore() {
+    console.log("Explore!");
+  }
+  configure() {
+    console.log("Configure!");
+  }
+
+  showInactiveUsers(value: boolean) {
+    this.showInactive.set(value);
+  }
+
+  showExternalUsers(value: boolean) {
+    this.showExternals.set(value);
   }
 }
